@@ -1,0 +1,58 @@
+/* style.css */
+
+/* Fond pentru întreaga aplicație */
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-background-color: #282828;
+    -fx-text-fill: white;
+}
+
+/* ComboBox pentru selectarea time-range */
+.combo-box {
+    -fx-background-color: #1DB954;
+    -fx-text-fill: white;
+    -fx-border-color: #1DB954;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+/* Butoane */
+.button {
+    -fx-background-color: #1DB954;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-margin: 10px;
+}
+
+/* Butoanele când sunt apăsate */
+.button:hover {
+    -fx-background-color: #1ed760;
+}
+
+/* ListView pentru artiști */
+.list-view {
+    -fx-background-color: #121212;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+/* Căsuțe de text (label-uri) */
+.label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0fc610;
+}
+
+.combo-box {
+    -fx-background-color: #1DB954;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 180px;
+    -fx-text-alignment: center;
+}
