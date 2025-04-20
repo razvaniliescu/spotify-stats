@@ -14,3 +14,13 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-parser" % "0.14.10",
   "org.scalafx" %% "scalafx" % "22.0.0-R33"
 )
+
+enablePlugins(AssemblyPlugin)
+
+assembly / mainClass := Some("Main")
+assembly / assemblyJarName := "spotify-cli-client.jar"
+
+ThisBuild / assemblyMergeStrategy := {
+  case PathList("META-INF", _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}

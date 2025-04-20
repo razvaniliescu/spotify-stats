@@ -3,10 +3,10 @@ import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.HBox
 import scalafx.geometry.Pos
 
-class ArtistCell extends ListCell[Artist] {
-  item.onChange { (_, _, newArtist) =>
-    if (newArtist != null) {
-      val img = newArtist.imageUrl match {
+class Cell[T](getImageUrl: T => Option[String], getText: T => String) extends ListCell[T] {
+  item.onChange { (_, _, newItem) =>
+    if (newItem != null) {
+      val img = getImageUrl(newItem) match {
         case Some(url) =>
           new ImageView(new Image(url, 50, 50, false, true)) {
             fitWidth = 50
@@ -23,7 +23,7 @@ class ArtistCell extends ListCell[Artist] {
           }
       }
 
-      val nameLabel = new Label(newArtist.name)
+      val nameLabel = new Label(getText(newItem))
 
       val hbox = new HBox {
         spacing = 10

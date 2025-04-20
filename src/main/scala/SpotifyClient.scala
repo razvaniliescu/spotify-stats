@@ -1,5 +1,4 @@
 import sttp.client4._
-import sttp.model.Uri
 
 class SpotifyClient(accessToken: String) {
   val backend: WebSocketSyncBackend = DefaultSyncBackend()

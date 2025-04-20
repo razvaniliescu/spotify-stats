@@ -1,10 +1,9 @@
 import sttp.client4._
-import sttp.model.Uri
 import java.util.Base64
 
 class Auth(clientId: String, clientSecret: String) {
   private val backend: WebSocketSyncBackend = DefaultSyncBackend()
-  val credentials = Base64.getEncoder.encodeToString(s"$clientId:$clientSecret".getBytes("UTF-8"))
+  private val credentials = Base64.getEncoder.encodeToString(s"$clientId:$clientSecret".getBytes("UTF-8"))
 
   def getAuthorizationUrl(redirectUri: String, scopes: List[String]): String = {
     val scopeStr = scopes.mkString(" ")
@@ -23,14 +22,12 @@ class Auth(clientId: String, clientSecret: String) {
       .response(asStringAlways)
 
     val response = request.send(backend)
-
     io.circe.parser.parse(response.body)
       .flatMap(_.hcursor.get[String]("access_token"))
       .getOrElse(throw new Exception("Failed to get access token"))
   }
   
   def getAccessToken: String = {
-
     val request = basicRequest
       .post(uri"https://accounts.spotify.com/api/token")
       .header("Authorization", s"Basic $credentials")
@@ -38,7 +35,6 @@ class Auth(clientId: String, clientSecret: String) {
       .response(asStringAlways)
 
     val response = request.send(backend)
-
     io.circe.parser.parse(response.body)
       .flatMap(_.hcursor.get[String]("access_token"))
       .getOrElse(throw new Exception("Failed to get access token"))
